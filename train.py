@@ -10,8 +10,9 @@ import pandas as pd
 import numpy as np
 from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
 from sklearn.model_selection import train_test_split
-from sklearn.ensemble import RandomForestRegressor
+from sklearn.linear_model import ElasticNet
 from sklearn.preprocessing import StandardScaler
+from sklearn.ensemble import RandomForestRegressor
 
 import mlflow
 import mlflow.sklearn
@@ -42,13 +43,13 @@ if __name__ == "__main__":
     train_y = train[["quality"]]
     test_y = test[["quality"]]
 
-    alpha = float(sys.argv[1]) if len(sys.argv) > 1 else 0.5
-    l1_ratio = float(sys.argv[2]) if len(sys.argv) > 2 else 0.5
-
     # Scale the features
     scaler = StandardScaler()
     train_x = scaler.fit_transform(train_x)
     test_x = scaler.transform(test_x)
+
+    alpha = float(sys.argv[1]) if len(sys.argv) > 1 else 0.5
+    l1_ratio = float(sys.argv[2]) if len(sys.argv) > 2 else 0.5
 
     with mlflow.start_run():
         lr = RandomForestRegressor(n_estimators=200, random_state=42)
@@ -58,7 +59,7 @@ if __name__ == "__main__":
 
         (rmse, mae, r2) = eval_metrics(test_y, pred)
 
-        print("Elasticnet model (alpha=%f, l1_ratio=%f):" % (alpha, l1_ratio))
+        print("RandomForest model (n_estimators=%d, random_state=%d):" % (200, 42))
         print("  RMSE: %s" % rmse)
         print("  MAE: %s" % mae)
         print("  R2: %s" % r2)
