@@ -1,0 +1,24 @@
+artifact_path: "file:C:/Users/Jasz_/Documents/Master/Matem\xE1ticas y Programaci\xF3\
+  n IA/Proyectos/Deberes1/mlflow-example/mlruns/0/models/m-8c2d80b2623243d5a873061b222f2220/artifacts"
+flavors:
+  python_function:
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.skops
+    predict_fn: predict
+    python_version: 3.14.7
+  sklearn:
+    code: null
+    pickled_model: model.skops
+    serialization_format: skops
+    sklearn_version: 1.9.0
+    skops_trusted_types: null
+mlflow_version: 3.15.2
+model_id: m-8c2d80b2623243d5a873061b222f2220
+model_size_bytes: 7801
+model_uuid: m-8c2d80b2623243d5a873061b222f2220
+prompts: null
+run_id: abe7dd02db1e43fd9f8fbe94509a88d5
+utc_time_created: '2026-08-29 01:20:45.656111'
